@@ -1,6 +1,6 @@
 # 🤖 Fluxi Bot - AI-Powered Discord Bot
 
-A feature-rich Discord bot with a fun, gamer personality powered by Google's Gemini 2.0 Flash AI!
+A feature-rich Discord bot with a fun, gamer personality powered by Grok AI via OpenRouter!
 
 ## ✨ Features
 
@@ -26,10 +26,11 @@ A feature-rich Discord bot with a fun, gamer personality powered by Google's Gem
 - `/truth` - Truth questions
 - `/dare` - Dare challenges
 
-### 🧠 AI-Powered Commands (Gemini 2.0 Flash)
+### 🧠 AI-Powered Commands (Grok via OpenRouter)
 - `/fluxi` - Chat with Fluxi's AI personality
 - `/fluxiadvice` - Get motivational advice
 - `/sayasfluxi` - Bot talks with AI personality (Admin only)
+- **@mention** - Mention the bot anywhere to chat!
 
 ### 🛡️ Moderation & Utilities
 - `/userinfo` - User information
@@ -49,7 +50,7 @@ A feature-rich Discord bot with a fun, gamer personality powered by Google's Gem
 ### Prerequisites
 - Node.js v18 or higher
 - A Discord Bot Token
-- A Google Gemini API Key (free tier available)
+- An OpenRouter API Key (https://openrouter.ai)
 
 ### Step 1: Clone or Download
 ```bash
@@ -72,7 +73,8 @@ npm install
    ```env
    DISCORD_TOKEN=your_discord_bot_token_here
    CLIENT_ID=your_bot_client_id_here
-   GEMINI_API_KEY=your_gemini_api_key_here
+   GUILD_ID=your_server_id_here  # Optional: for instant command deployment
+   OPENROUTER_API_KEY=your_openrouter_api_key_here
    OWNER_ID=your_discord_user_id_here
    ```
 
@@ -95,10 +97,12 @@ npm install
 **Client ID:**
 - Found on the "General Information" page of your Discord application
 
-**Gemini API Key:**
-1. Go to https://aistudio.google.com/app/apikey
-2. Click "Create API Key"
-3. Copy the key (free tier available!)
+**OpenRouter API Key:**
+1. Go to https://openrouter.ai/keys
+2. Sign in and create an account
+3. Click "Create Key"
+4. Copy your API key
+5. Add credits to your account (pay-as-you-go pricing)
 
 **Owner ID:**
 1. Enable Developer Mode in Discord (Settings → Advanced)
@@ -120,7 +124,8 @@ You should see:
 🤖 Fluxi Bot is ONLINE!
 📛 Logged in as: Fluxi Bot#1234
 🎮 Serving 1 server(s)
-🧠 AI powered by Gemini 2.0 Flash
+🧠 AI powered by Grok via OpenRouter
+💬 Mention me anywhere to chat!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
@@ -157,15 +162,14 @@ export default {
 
 The bot automatically loads all command files on startup!
 
-## 🤖 Using Gemini AI in Commands
+## 🤖 Using Grok AI in Commands
 
-Access the Gemini model in any command:
+Access the AI in any command:
 
 ```javascript
 async execute(interaction) {
     const prompt = "Your prompt here";
-    const result = await interaction.client.gemini.generateContent(prompt);
-    const response = result.response.text();
+    const response = await interaction.client.callAI(prompt);
     await interaction.reply(response);
 }
 ```
@@ -177,10 +181,10 @@ async execute(interaction) {
 - Wait a few minutes for Discord to sync commands
 - Try `/` in your server to see if commands appear
 
-**Gemini API errors:**
-- Verify your `GEMINI_API_KEY` is correct
-- Check you haven't exceeded free tier limits
-- Ensure your API key has the Gemini API enabled
+**OpenRouter API errors:**
+- Verify your `OPENROUTER_API_KEY` is correct
+- Check you have credits in your OpenRouter account
+- Ensure your API key is active
 
 **Bot not responding:**
 - Check console for errors
@@ -206,17 +210,19 @@ fluxi-bot/
 
 ## 🎯 Tips
 
-- **Rate Limits:** Don't spam Gemini AI commands (free tier has limits)
+- **API Costs:** Grok via OpenRouter uses pay-as-you-go pricing - monitor your usage
 - **Permissions:** Make sure the bot has proper permissions in your server
 - **Updates:** Keep dependencies updated with `npm update`
 - **Security:** NEVER share your `.env` file or tokens!
+- **Guild Commands:** Use GUILD_ID for instant command deployment in testing
 
 ## 🐛 Common Issues
 
 1. **"Invalid Token" error:** Double-check your DISCORD_TOKEN in `.env`
 2. **Commands not registering:** Make sure CLIENT_ID is correct
-3. **AI not responding:** Verify GEMINI_API_KEY is valid
+3. **AI not responding:** Verify OPENROUTER_API_KEY is valid and has credits
 4. **Permission errors:** Give the bot Administrator permission or specific permissions
+5. **404 Model Error:** Make sure you're using a valid model (x-ai/grok-4.1-fast)
 
 ## 📄 License
 
@@ -225,7 +231,7 @@ MIT License - Feel free to modify and use!
 ## 🙏 Credits
 
 - Built with [Discord.js](https://discord.js.org/)
-- Powered by [Google Gemini AI](https://ai.google.dev/)
+- Powered by [Grok AI](https://x.ai/grok) via [OpenRouter](https://openrouter.ai/)
 - Made with ❤️ for the Discord community
 
 ---
