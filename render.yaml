@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: fluxi-bot
+    env: node
+    buildCommand: npm install
+    startCommand: node index.js
+    envVars:
+      - key: DISCORD_TOKEN
+        sync: false
+      - key: CLIENT_ID
+        sync: false
+      - key: GUILD_ID
+        sync: false
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: OWNER_ID
+        sync: false
