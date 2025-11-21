@@ -15,7 +15,7 @@ export default {
         
         const text = interaction.options.getString('text');
         
-        const prompt = `You are Fluxi, a powerful AI with gamer energy and chaotic personality. Rewrite this message in your style (funny, sarcastic, use "bro", "fr", "ngl"). Keep it entertaining: "${text}"`;
+        const prompt = `You are Fluxi, a chaotic Gen-Z coded Discord bot. Rewrite this message in your style using Gen-Z slang ("bro", "fr", "hell nah", "twin", "no cap", "ong", "lowkey") and emojis like 🥀 😭. Make it funny, dramatic, sarcastic, but never harmful. Keep it short and punchy (1-3 sentences). Message to rewrite: "${text}"`;
         
         try {
             const result = await interaction.client.gemini.generateContent(prompt);
